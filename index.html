@@ -6,54 +6,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>University Study Notes</title>
+<title>StudySpace | University Notes</title>
 
 <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
     body {
         font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f4f6f9;
-        color: #263238;
+        background: #f5f6fc;
+        color: #20213a;
         line-height: 1.6;
     }
 
     header {
-        background-color: #183153;
+        background: #171832;
         color: white;
-        text-align: center;
-        padding: 45px 20px;
+        padding: 22px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
-    header h1 {
-        margin-bottom: 10px;
+    .logo {
+        font-size: 23px;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #a99aff;
+    }
+
+    nav a {
+        color: #e4e3f7;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 14px;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #171832, #39316f);
+        color: white;
+        padding: 75px 8%;
+        text-align: center;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #302c58;
+        color: #c9c0ff;
+        padding: 7px 15px;
+        border-radius: 25px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: clamp(32px, 5vw, 52px);
+        line-height: 1.2;
+        margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+        color: #b7a8ff;
+    }
+
+    .hero p {
+        color: #d6d5eb;
+        max-width: 600px;
+        margin: 0 auto 28px;
+    }
+
+    .search-box {
+        max-width: 480px;
+        margin: auto;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 15px 18px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
     }
 
     main {
-        max-width: 850px;
-        margin: 30px auto;
-        padding: 0 20px;
+        max-width: 1100px;
+        margin: 55px auto;
+        padding: 0 25px;
     }
 
-    .subject {
-        background-color: white;
-        padding: 20px;
+    .section-heading {
+        margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    .section-heading p {
+        color: #74758b;
+    }
+
+    .subjects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 22px;
+    }
+
+    .card {
+        background: white;
+        padding: 27px;
+        border: 1px solid #e8e8f2;
+        border-radius: 16px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(32, 33, 58, 0.09);
+    }
+
+    .icon {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        background: #efedff;
+        border-radius: 13px;
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    .card h3 {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #74758b;
+        font-size: 14px;
         margin-bottom: 20px;
-        border-radius: 10px;
     }
 
-    a {
-        color: #1769aa;
+    .card a {
+        color: #6552cf;
+        font-weight: bold;
         text-decoration: none;
+        font-size: 14px;
     }
 
-    a:hover {
+    .card a:hover {
         text-decoration: underline;
+    }
+
+    .featured {
+        margin-top: 55px;
+        background: white;
+        border: 1px solid #e8e8f2;
+        border-radius: 16px;
+        padding: 30px;
+    }
+
+    .featured h2 {
+        margin-bottom: 10px;
+    }
+
+    .featured p {
+        color: #74758b;
+        margin-bottom: 18px;
+    }
+
+    .featured a {
+        display: inline-block;
+        background: #6552cf;
+        color: white;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 8px;
     }
 
     footer {
         text-align: center;
-        padding: 20px;
-        color: #607080;
+        background: #171832;
+        color: #c9c8df;
+        padding: 28px 15px;
+        margin-top: 65px;
+        font-size: 13px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media (max-width: 600px) {
+        header {
+            padding: 20px 6%;
+        }
+
+        nav a {
+            margin-left: 0;
+            margin-right: 14px;
+        }
+
+        .hero {
+            padding: 55px 6%;
+        }
+
+        main {
+            margin: 35px auto;
+            padding: 0 18px;
+        }
     }
 </style>
 ```
@@ -64,37 +234,110 @@
 
 ```
 <header>
-    <h1>📚 University Study Notes</h1>
-    <p>A growing library of notes, formulas, and worked examples.</p>
+    <div class="logo">Study<span>Space.</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#subjects">Subjects</a>
+        <a href="#notes">Notes</a>
+    </nav>
 </header>
 
+<section class="hero" id="home">
+    <div class="tag">YOUR PERSONAL LEARNING LIBRARY</div>
+
+    <h1>Learn smarter.<br><span>One topic at a time.</span></h1>
+
+    <p>
+        Your growing collection of university notes, useful formulas,
+        clear explanations, and worked examples, all in one place.
+    </p>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Search for a subject..."
+            aria-label="Search subjects"
+        >
+    </div>
+</section>
+
 <main>
+    <section id="subjects">
+        <div class="section-heading">
+            <h2>Explore your subjects 📚</h2>
+            <p>Choose a subject and start learning.</p>
+        </div>
 
-    <section class="subject">
-        <h2>📊 Statistics</h2>
-        <p>Explore probability and other important statistical concepts.</p>
-        <a href="Statistics/README.md">Explore Statistics</a>
-        <br>
-        <a href="Statistics/probability.md">Read Probability Notes</a>
+        <div class="subjects">
+
+            <article class="card" data-search="statistics probability distributions">
+                <div class="icon">📊</div>
+                <h3>Statistics</h3>
+                <p>
+                    Explore probability, distributions, estimation,
+                    hypothesis testing, and more.
+                </p>
+                <a href="Statistics/README.md">Explore Statistics →</a>
+            </article>
+
+            <article class="card" data-search="economics microeconomics monopoly markets">
+                <div class="icon">💰</div>
+                <h3>Economics</h3>
+                <p>
+                    Study consumer theory, market equilibrium,
+                    production, costs, and monopoly.
+                </p>
+                <a href="Economics/README.md">Explore Economics →</a>
+            </article>
+
+            <article class="card" data-search="mathematics matrices calculus equations">
+                <div class="icon">➗</div>
+                <h3>Mathematics</h3>
+                <p>
+                    Practise matrices, calculus, differential equations,
+                    and other mathematical concepts.
+                </p>
+                <a href="Mathematics/README.md">Explore Mathematics →</a>
+            </article>
+
+        </div>
     </section>
 
-    <section class="subject">
-        <h2>💰 Economics</h2>
-        <p>Explore consumer theory, market equilibrium, monopoly, and more.</p>
-        <a href="Economics/README.md">Explore Economics</a>
+    <section class="featured" id="notes">
+        <h2>⭐ Featured notes: Probability</h2>
+        <p>
+            Start with the foundations of probability, including
+            important rules, formulas, worked examples, and practice questions.
+        </p>
+        <a href="Statistics/probability.md">Read Probability Notes →</a>
     </section>
-
-    <section class="subject">
-        <h2>➗ Mathematics</h2>
-        <p>Explore matrices, differential equations, and other mathematical topics.</p>
-        <a href="Mathematics/README.md">Explore Mathematics</a>
-    </section>
-
 </main>
 
 <footer>
-    <p>Built as a learning project using GitHub Pages.</p>
+    <p>StudySpace | Built for learning, one topic at a time.</p>
 </footer>
+
+<script>
+    const searchInput = document.getElementById("search");
+    const cards = document.querySelectorAll(".card");
+
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+
+        cards.forEach(function (card) {
+            const text = card.innerText.toLowerCase();
+            const keywords = card.dataset.search.toLowerCase();
+
+            if (text.includes(query) || keywords.includes(query)) {
+                card.classList.remove("hidden");
+            } else {
+                card.classList.add("hidden");
+            }
+        });
+    });
+</script>
 ```
 
 </body>
