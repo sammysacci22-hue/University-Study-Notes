@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Probability Notes | StudySpace</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f6fc;
+        color: #292a40;
+        line-height: 1.8;
+    }
+
+    header {
+        background: #171832;
+        padding: 20px 7%;
+    }
+
+    header a {
+        color: #c9c0ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #171832, #39316f);
+        color: white;
+        padding: 45px 7%;
+    }
+
+    .hero p {
+        color: #d6d5eb;
+    }
+
+    .container {
+        max-width: 850px;
+        margin: 35px auto;
+        padding: 0 20px;
+    }
+
+    .content {
+        background: white;
+        padding: 30px;
+        border-radius: 14px;
+        border: 1px solid #e8e8f2;
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        color: #5140ad;
+        margin-top: 0;
+    }
+
+    h3 {
+        margin-top: 24px;
+    }
+
+    .formula {
+        background: #f0edff;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin: 15px 0;
+        overflow-wrap: anywhere;
+    }
+
+    .example {
+        background: #f2f8f4;
+        border-left: 4px solid #39976a;
+        padding: 18px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    footer {
+        background: #171832;
+        color: #c9c8df;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+        .content {
+            padding: 22px;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header>
+    <a href="index.html">← Back to Statistics</a>
+</header>
+
+<section class="hero">
+    <h1>🎲 Introduction to Probability</h1>
+    <p>
+        Understand the basics, learn the formulas, and practise
+        solving probability problems step by step.
+    </p>
+</section>
+
+<main class="container">
+
+    <section class="content">
+        <h2>1. What is probability?</h2>
+
+        <p>
+            Probability measures how likely an event is to happen.
+            Its value lies between 0 and 1.
+        </p>
+
+        <ul>
+            <li><strong>0:</strong> The event is impossible.</li>
+            <li><strong>0.5:</strong> The event has a 50% chance.</li>
+            <li><strong>1:</strong> The event is certain.</li>
+        </ul>
+
+        <div class="formula">
+            0 ≤ P(A) ≤ 1
+        </div>
+
+        <p>
+            Here, P(A) means the probability that event A occurs.
+        </p>
+    </section>
+
+    <section class="content">
+        <h2>2. Important definitions</h2>
+
+        <h3>Experiment</h3>
+        <p>
+            An action that produces an outcome, such as rolling a die.
+        </p>
+
+        <h3>Sample space</h3>
+        <p>
+            The set of all possible outcomes of an experiment.
+            For a standard six-sided die:
+        </p>
+
+        <div class="formula">
+            S = {1, 2, 3, 4, 5, 6}
+        </div>
+
+        <h3>Event</h3>
+        <p>
+            A collection of outcomes that satisfy a particular condition.
+            For example, rolling an even number gives:
+        </p>
+
+        <div class="formula">
+            A = {2, 4, 6}
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>3. The basic probability formula</h2>
+
+        <p>
+            When all outcomes are equally likely, divide the number
+            of favourable outcomes by the total number of possible outcomes.
+        </p>
+
+        <div class="formula">
+            P(A) = Number of favourable outcomes / Total number of outcomes
+        </div>
+
+        <div class="example">
+            <h3>Worked example</h3>
+
+            <p>
+                A fair die is rolled. Find the probability of obtaining
+                an even number.
+            </p>
+
+            <p><strong>Step 1:</strong> List all possible outcomes.</p>
+            <p>S = {1, 2, 3, 4, 5, 6}</p>
+
+            <p><strong>Step 2:</strong> Identify the favourable outcomes.</p>
+            <p>A = {2, 4, 6}</p>
+
+            <p><strong>Step 3:</strong> Count the outcomes.</p>
+            <p>Favourable outcomes = 3</p>
+            <p>Total outcomes = 6</p>
+
+            <p><strong>Step 4:</strong> Apply the formula.</p>
+
+            <div class="formula">
+                P(A) = 3/6 = 1/2 = 0.5
+            </div>
+
+            <p>
+                <strong>Answer:</strong> The probability is 0.5, or 50%.
+            </p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>4. Important probability rules</h2>
+
+        <h3>Complement rule</h3>
+        <p>
+            The complement of A means that A does not occur.
+        </p>
+
+        <div class="formula">
+            P(A') = 1 − P(A)
+        </div>
+
+        <h3>Addition rule</h3>
+        <p>
+            For two events A and B:
+        </p>
+
+        <div class="formula">
+            P(A ∪ B) = P(A) + P(B) − P(A ∩ B)
+        </div>
+
+        <p>
+            The intersection term is subtracted because outcomes
+            common to both events would otherwise be counted twice.
+        </p>
+
+        <h3>Multiplication rule for independent events</h3>
+        <p>
+            If A and B are independent, the occurrence of one does
+            not change the probability of the other.
+        </p>
+
+        <div class="formula">
+            P(A ∩ B) = P(A) × P(B)
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>5. Common mistakes to avoid</h2>
+
+        <ul>
+            <li>Counting the total possible outcomes incorrectly.</li>
+            <li>Confusing favourable outcomes with total outcomes.</li>
+            <li>Using the multiplication rule without checking independence.</li>
+            <li>Forgetting to subtract the intersection in the general addition rule.</li>
+            <li>Giving a probability smaller than 0 or greater than 1.</li>
+        </ul>
+    </section>
+
+    <section class="content">
+        <h2>6. Practice questions</h2>
+
+        <ol>
+            <li>A fair die is rolled. Find the probability of obtaining a number greater than 4.</li>
+            <li>A fair coin is tossed once. Find the probability of obtaining tails.</li>
+            <li>A card is selected from a standard deck of 52 cards. Find the probability of selecting an ace.</li>
+            <li>If P(A) = 0.35, find the probability that A does not occur.</li>
+        </ol>
+
+        <p>
+            <strong>Study tip:</strong> Try each question yourself
+            before checking your notes.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    StudySpace | Learn one concept at a time.
+</footer>
+```
+
+</body>
+</html>
