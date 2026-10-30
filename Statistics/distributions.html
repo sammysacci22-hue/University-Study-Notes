@@ -2,255 +2,665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probability Distributions | StudySpace</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Probability Distributions | StudySpace</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
-            margin: 0;
-            padding: 30px;
-            line-height: 1.7;
-        }
+<style>
+:root {
+    --bg: #0b1120;
+    --panel: #151f35;
+    --panel-light: #1e2b45;
+    --purple: #a78bfa;
+    --blue: #60a5fa;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #2b3954;
+}
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        h1, h2, h3 {
-            color: #a78bfa;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
 
-        .card {
-            background: #1e293b;
-            padding: 22px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
+header {
+    padding: 22px 6%;
+    border-bottom: 1px solid var(--border);
+    background: #101a2d;
+}
 
-        .formula {
-            background: #334155;
-            padding: 12px;
-            border-radius: 8px;
-            font-family: monospace;
-            overflow-x: auto;
-        }
+header a {
+    color: var(--purple);
+    text-decoration: none;
+}
 
-        a {
-            color: #a78bfa;
-            text-decoration: none;
-        }
+.layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    max-width: 1400px;
+    margin: auto;
+}
 
-        .back {
-            display: inline-block;
-            margin-bottom: 25px;
-        }
-    </style>
+.sidebar {
+    padding: 30px 20px;
+    border-right: 1px solid var(--border);
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.sidebar h3 {
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 11px 14px;
+    border-radius: 8px;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.sidebar a:hover {
+    background: var(--panel-light);
+    color: var(--purple);
+}
+
+main {
+    padding: 45px 7%;
+    max-width: 1050px;
+}
+
+.hero {
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 35px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 700px;
+}
+
+.tag {
+    display: inline-block;
+    background: #302554;
+    color: var(--purple);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+section {
+    margin: 45px 0;
+    scroll-margin-top: 25px;
+}
+
+h2 {
+    color: var(--purple);
+    font-size: 25px;
+}
+
+h3 {
+    color: var(--blue);
+    margin-top: 25px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 23px;
+    border-radius: 13px;
+    margin: 20px 0;
+}
+
+.formula {
+    background: #202e49;
+    border-left: 4px solid var(--purple);
+    padding: 17px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-family: monospace;
+    font-size: 16px;
+    overflow-x: auto;
+}
+
+.step {
+    background: var(--panel-light);
+    padding: 15px 18px;
+    border-radius: 9px;
+    margin: 12px 0;
+}
+
+.step strong {
+    color: var(--blue);
+}
+
+.note {
+    background: #25233d;
+    border-left: 4px solid var(--blue);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 13px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    color: var(--purple);
+    background: var(--panel);
+}
+
+button {
+    background: var(--purple);
+    color: #111827;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.answer {
+    display: none;
+    margin-top: 12px;
+    padding: 13px;
+    background: var(--panel-light);
+    border-radius: 8px;
+}
+
+footer {
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 60px;
+}
+
+@media(max-width: 750px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+        height: auto;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    main {
+        padding: 30px 6%;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+</style>
 </head>
 
 <body>
-<div class="container">
 
-    <a class="back" href="index.html">← Back to Statistics</a>
+<header>
+    <a href="index.html">← Back to Statistics</a>
+</header>
 
+<div class="layout">
+
+<aside class="sidebar">
+    <h3>Study Guide</h3>
+    <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#binomial">Binomial Distribution</a>
+        <a href="#poisson">Poisson Distribution</a>
+        <a href="#normal">Normal Distribution</a>
+        <a href="#comparison">Quick Comparison</a>
+        <a href="#practice">Practice Questions</a>
+    </nav>
+</aside>
+
+<main>
+
+<div class="hero">
+    <span class="tag">STATISTICS · STUDY NOTES</span>
     <h1>Probability Distributions</h1>
-    <p>Learn the main probability distributions, their formulas and how to solve questions involving them.</p>
+    <p>
+        Understand how probability distributions work, when to use them,
+        and how to solve questions using their formulas.
+    </p>
+</div>
+
+<section id="introduction">
+    <h2>01. Introduction to Probability Distributions</h2>
 
     <div class="card">
-        <h2>1. What is a Probability Distribution?</h2>
+        <p>
+            A probability distribution describes how probabilities are
+            assigned to the possible values of a random variable.
+        </p>
 
-        <p>A probability distribution describes how probabilities are assigned to the possible values of a random variable.</p>
+        <h3>Types of distributions</h3>
 
-        <p>There are two main types:</p>
+        <p><strong>Discrete distributions:</strong> Used when a random variable
+        takes countable values, such as 0, 1, 2, 3 and so on.</p>
 
-        <ul>
-            <li><strong>Discrete distributions:</strong> Used when a random variable takes countable values.</li>
-            <li><strong>Continuous distributions:</strong> Used when a random variable can take any value within an interval.</li>
-        </ul>
+        <p><strong>Continuous distributions:</strong> Used when a random
+        variable can take any value within an interval, such as height,
+        weight or examination scores.</p>
+
+        <div class="note">
+            <strong>Remember:</strong> Binomial and Poisson are discrete
+            distributions, while the Normal distribution is continuous.
+        </div>
     </div>
+</section>
+
+<section id="binomial">
+    <h2>02. Binomial Distribution</h2>
 
     <div class="card">
-        <h2>2. Binomial Distribution</h2>
+        <p>
+            The Binomial distribution is used when an experiment consists
+            of a fixed number of independent trials, with each trial having
+            only two possible outcomes: success or failure.
+        </p>
 
-        <p>The binomial distribution is used when an experiment has a fixed number of independent trials, each with only two possible outcomes: success or failure.</p>
+        <h3>Conditions for using the Binomial distribution</h3>
 
-        <h3>Conditions</h3>
-        <ul>
-            <li>There is a fixed number of trials (n).</li>
-            <li>Each trial has two possible outcomes.</li>
-            <li>The probability of success (p) remains constant.</li>
-            <li>Trials are independent.</li>
-        </ul>
+        <ol>
+            <li>There must be a fixed number of trials (n).</li>
+            <li>Each trial must have two possible outcomes.</li>
+            <li>The probability of success (p) must remain constant.</li>
+            <li>The trials must be independent.</li>
+        </ol>
 
-        <h3>Probability Formula</h3>
+        <h3>Probability formula</h3>
 
         <div class="formula">
-            P(X = x) = C(n,x) p^x (1-p)^(n-x)
+            P(X = x) = C(n,x) × p<sup>x</sup> × (1-p)<sup>n-x</sup>
         </div>
 
-        <p>Where:</p>
+        <p><strong>Where:</strong></p>
         <ul>
             <li>n = number of trials</li>
             <li>x = number of successes</li>
             <li>p = probability of success</li>
             <li>1-p = probability of failure</li>
+            <li>C(n,x) = n! / [x!(n-x)!]</li>
         </ul>
 
-        <h3>Mean and Variance</h3>
+        <h3>Mean and variance</h3>
+
         <div class="formula">
             Mean = np
             <br><br>
             Variance = np(1-p)
-        </div>
-
-        <h3>Worked Example</h3>
-
-        <p>A coin is tossed 5 times. Find the probability of getting exactly 3 heads.</p>
-
-        <p><strong>Step 1:</strong> Identify the values.</p>
-        <p>n = 5, x = 3, p = 0.5</p>
-
-        <p><strong>Step 2:</strong> Apply the formula.</p>
-
-        <div class="formula">
-            P(X = 3) = C(5,3)(0.5)^3(0.5)^2
             <br><br>
-            = 10 × 0.125 × 0.25
-            <br><br>
-            = 0.3125
+            Standard deviation = √[np(1-p)]
         </div>
-
-        <p><strong>Answer:</strong> The probability is 0.3125 or 31.25%.</p>
     </div>
 
+    <h3>Worked Example</h3>
+
     <div class="card">
-        <h2>3. Poisson Distribution</h2>
+        <p>
+            A fair coin is tossed 5 times. Find the probability of
+            obtaining exactly 3 heads.
+        </p>
 
-        <p>The Poisson distribution is used to calculate the probability of a certain number of events occurring within a fixed interval of time, space or another specified measurement.</p>
+        <div class="step">
+            <strong>Step 1: Identify the values</strong>
+            <p>n = 5</p>
+            <p>x = 3</p>
+            <p>p = 0.5</p>
+        </div>
 
-        <p>Examples include:</p>
+        <div class="step">
+            <strong>Step 2: Write the formula</strong>
+            <div class="formula">
+                P(X = x) = C(n,x)p<sup>x</sup>(1-p)<sup>n-x</sup>
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>Step 3: Substitute the values</strong>
+            <div class="formula">
+                P(X = 3) = C(5,3)(0.5)<sup>3</sup>(0.5)<sup>2</sup>
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>Step 4: Calculate</strong>
+            <div class="formula">
+                = 10 × 0.125 × 0.25
+                <br><br>
+                = 0.3125
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Final Answer:</strong> 0.3125 or 31.25%.
+        </div>
+    </div>
+</section>
+
+<section id="poisson">
+    <h2>03. Poisson Distribution</h2>
+
+    <div class="card">
+        <p>
+            The Poisson distribution is used to calculate the probability
+            of a certain number of events occurring within a fixed interval
+            of time, space or another specified measurement.
+        </p>
+
+        <h3>Examples</h3>
         <ul>
             <li>Number of customers arriving per hour.</li>
-            <li>Number of accidents per month.</li>
+            <li>Number of accidents occurring per month.</li>
             <li>Number of typing errors per page.</li>
         </ul>
 
-        <h3>Probability Formula</h3>
+        <h3>Probability formula</h3>
 
         <div class="formula">
-            P(X = x) = (e^-λ × λ^x) / x!
+            P(X = x) = (e<sup>-λ</sup> × λ<sup>x</sup>) / x!
         </div>
 
-        <p>Where:</p>
+        <p><strong>Where:</strong></p>
         <ul>
-            <li>λ (lambda) = average number of events</li>
-            <li>x = number of events required</li>
-            <li>e ≈ 2.71828</li>
+            <li>λ = average number of events.</li>
+            <li>x = number of events required.</li>
+            <li>e = approximately 2.71828.</li>
         </ul>
 
-        <h3>Mean and Variance</h3>
+        <h3>Mean and variance</h3>
 
         <div class="formula">
             Mean = λ
             <br><br>
             Variance = λ
-        </div>
-
-        <h3>Worked Example</h3>
-
-        <p>A shop receives an average of 3 customers per hour. Find the probability that exactly 2 customers arrive in an hour.</p>
-
-        <p><strong>Step 1:</strong> Identify the values.</p>
-        <p>λ = 3, x = 2</p>
-
-        <p><strong>Step 2:</strong> Apply the formula.</p>
-
-        <div class="formula">
-            P(X = 2) = (e^-3 × 3²) / 2!
             <br><br>
-            = (0.0498 × 9) / 2
-            <br><br>
-            = 0.2241
+            Standard deviation = √λ
         </div>
-
-        <p><strong>Answer:</strong> The probability is approximately 0.2241 or 22.41%.</p>
     </div>
 
+    <h3>Worked Example</h3>
+
     <div class="card">
-        <h2>4. Normal Distribution</h2>
+        <p>
+            A shop receives an average of 3 customers per hour.
+            Find the probability that exactly 2 customers arrive
+            in one hour.
+        </p>
 
-        <p>The normal distribution is a continuous probability distribution that is symmetrical and bell-shaped.</p>
+        <div class="step">
+            <strong>Step 1: Identify the values</strong>
+            <p>λ = 3</p>
+            <p>x = 2</p>
+        </div>
 
-        <p>Its two main parameters are:</p>
+        <div class="step">
+            <strong>Step 2: Apply the formula</strong>
+            <div class="formula">
+                P(X = x) = (e<sup>-λ</sup> × λ<sup>x</sup>) / x!
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>Step 3: Substitute</strong>
+            <div class="formula">
+                P(X = 2) = (e<sup>-3</sup> × 3<sup>2</sup>) / 2!
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>Step 4: Calculate</strong>
+            <div class="formula">
+                = (0.049787 × 9) / 2
+                <br><br>
+                = 0.22404
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Final Answer:</strong> Approximately 0.2240 or 22.40%.
+        </div>
+    </div>
+</section>
+
+<section id="normal">
+    <h2>04. Normal Distribution</h2>
+
+    <div class="card">
+        <p>
+            The Normal distribution is a continuous probability distribution
+            that has a symmetrical, bell-shaped curve.
+        </p>
+
+        <p>It is described by two important parameters:</p>
+
         <ul>
-            <li>μ (mu) = population mean</li>
-            <li>σ (sigma) = population standard deviation</li>
+            <li>μ (mu) = population mean.</li>
+            <li>σ (sigma) = population standard deviation.</li>
         </ul>
 
-        <h3>Standard Normal Formula</h3>
+        <h3>Standard normal formula</h3>
 
         <div class="formula">
             Z = (X - μ) / σ
         </div>
 
-        <p>The Z-score tells us how many standard deviations a value is above or below the mean.</p>
+        <p>
+            The Z-score tells us how many standard deviations a value is
+            above or below the mean.
+        </p>
 
-        <h3>Important Properties</h3>
+        <h3>Important properties</h3>
 
         <ul>
             <li>The curve is symmetrical around the mean.</li>
             <li>Mean = Median = Mode.</li>
             <li>The total area under the curve equals 1.</li>
-            <li>Approximately 68% of observations lie within 1 standard deviation of the mean.</li>
+            <li>Approximately 68% of observations lie within 1 standard deviation.</li>
             <li>Approximately 95% lie within 2 standard deviations.</li>
             <li>Approximately 99.7% lie within 3 standard deviations.</li>
         </ul>
+    </div>
 
-        <h3>Worked Example</h3>
+    <h3>Worked Example</h3>
 
-        <p>Examination scores are normally distributed with a mean of 60 and a standard deviation of 10. Find the Z-score for a student who scored 80.</p>
+    <div class="card">
+        <p>
+            Examination scores are normally distributed with a mean
+            of 60 and a standard deviation of 10. Find the Z-score
+            for a student who scored 80.
+        </p>
 
-        <p><strong>Step 1:</strong> Identify the values.</p>
-        <p>X = 80, μ = 60, σ = 10</p>
-
-        <p><strong>Step 2:</strong> Apply the formula.</p>
-
-        <div class="formula">
-            Z = (80 - 60) / 10
-            <br><br>
-            Z = 20 / 10
-            <br><br>
-            Z = 2
+        <div class="step">
+            <strong>Step 1: Identify the values</strong>
+            <p>X = 80</p>
+            <p>μ = 60</p>
+            <p>σ = 10</p>
         </div>
 
-        <p><strong>Answer:</strong> The student's score is 2 standard deviations above the mean.</p>
+        <div class="step">
+            <strong>Step 2: Apply the formula</strong>
+            <div class="formula">
+                Z = (X - μ) / σ
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>Step 3: Substitute and calculate</strong>
+            <div class="formula">
+                Z = (80 - 60) / 10
+                <br><br>
+                Z = 20 / 10
+                <br><br>
+                Z = 2
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Final Answer:</strong> The student's score is
+            2 standard deviations above the mean.
+        </div>
+    </div>
+</section>
+
+<section id="comparison">
+    <h2>05. Quick Comparison</h2>
+
+    <div class="card">
+        <table>
+            <tr>
+                <th>Distribution</th>
+                <th>Type</th>
+                <th>Used for</th>
+            </tr>
+            <tr>
+                <td>Binomial</td>
+                <td>Discrete</td>
+                <td>Fixed trials with two outcomes.</td>
+            </tr>
+            <tr>
+                <td>Poisson</td>
+                <td>Discrete</td>
+                <td>Counting events in an interval.</td>
+            </tr>
+            <tr>
+                <td>Normal</td>
+                <td>Continuous</td>
+                <td>Continuous measurements and bell-shaped data.</td>
+            </tr>
+        </table>
+
+        <div class="note">
+            <strong>Exam Tip:</strong> Before choosing a formula,
+            identify what the question is describing. Look for fixed
+            trials, event counts or continuous measurements.
+        </div>
+    </div>
+</section>
+
+<section id="practice">
+    <h2>06. Practice Questions</h2>
+
+    <div class="card">
+        <p><strong>Question 1: Binomial</strong></p>
+        <p>
+            A coin is tossed 6 times. Find the probability of
+            obtaining exactly 4 heads.
+        </p>
+
+        <button onclick="toggleAnswer('answer1')">Show Answer</button>
+
+        <div class="answer" id="answer1">
+            n = 6, x = 4, p = 0.5
+            <br><br>
+            P(X = 4) = C(6,4)(0.5)<sup>4</sup>(0.5)<sup>2</sup>
+            <br><br>
+            = 15 × 0.0625 × 0.25
+            <br><br>
+            = <strong>0.234375</strong>
+        </div>
     </div>
 
     <div class="card">
-        <h2>5. Quick Comparison</h2>
+        <p><strong>Question 2: Poisson</strong></p>
+        <p>
+            A call centre receives an average of 5 calls per hour.
+            Find the probability of receiving exactly 3 calls in an hour.
+        </p>
 
-        <ul>
-            <li><strong>Binomial:</strong> Fixed number of independent trials with two outcomes.</li>
-            <li><strong>Poisson:</strong> Counts events occurring within a fixed interval.</li>
-            <li><strong>Normal:</strong> Continuous, symmetrical, bell-shaped distribution.</li>
-        </ul>
+        <button onclick="toggleAnswer('answer2')">Show Answer</button>
+
+        <div class="answer" id="answer2">
+            λ = 5, x = 3
+            <br><br>
+            P(X = 3) = (e<sup>-5</sup> × 5<sup>3</sup>) / 3!
+            <br><br>
+            = <strong>0.14037 approximately</strong>
+        </div>
     </div>
 
     <div class="card">
-        <h2>6. Practice Questions</h2>
+        <p><strong>Question 3: Normal</strong></p>
+        <p>
+            Examination scores have a mean of 70 and a standard deviation
+            of 8. Find the Z-score for a student who scores 86.
+        </p>
 
-        <ol>
-            <li>A coin is tossed 6 times. Find the probability of getting exactly 4 heads.</li>
-            <li>A call centre receives an average of 5 calls per hour. Find the probability of receiving exactly 3 calls in an hour.</li>
-            <li>Exam scores have a mean of 70 and a standard deviation of 8. Find the Z-score for a student who scores 86.</li>
-        </ol>
+        <button onclick="toggleAnswer('answer3')">Show Answer</button>
+
+        <div class="answer" id="answer3">
+            Z = (X - μ) / σ
+            <br><br>
+            Z = (86 - 70) / 8
+            <br><br>
+            Z = 16 / 8
+            <br><br>
+            = <strong>2</strong>
+        </div>
     </div>
+</section>
 
+<footer>
+    <p>StudySpace · University Study Notes</p>
+    <a href="index.html">Back to Statistics</a>
+</footer>
+
+</main>
 </div>
+
+<script>
+function toggleAnswer(id) {
+    const answer = document.getElementById(id);
+
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+    } else {
+        answer.style.display = "block";
+    }
+}
+</script>
+
 </body>
 </html>
 ```
