@@ -1,0 +1,256 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Distributions | StudySpace</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            color: #a78bfa;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 22px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .formula {
+            background: #334155;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        a {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <a class="back" href="index.html">← Back to Statistics</a>
+
+    <h1>Probability Distributions</h1>
+    <p>Learn the main probability distributions, their formulas and how to solve questions involving them.</p>
+
+    <div class="card">
+        <h2>1. What is a Probability Distribution?</h2>
+
+        <p>A probability distribution describes how probabilities are assigned to the possible values of a random variable.</p>
+
+        <p>There are two main types:</p>
+
+        <ul>
+            <li><strong>Discrete distributions:</strong> Used when a random variable takes countable values.</li>
+            <li><strong>Continuous distributions:</strong> Used when a random variable can take any value within an interval.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>2. Binomial Distribution</h2>
+
+        <p>The binomial distribution is used when an experiment has a fixed number of independent trials, each with only two possible outcomes: success or failure.</p>
+
+        <h3>Conditions</h3>
+        <ul>
+            <li>There is a fixed number of trials (n).</li>
+            <li>Each trial has two possible outcomes.</li>
+            <li>The probability of success (p) remains constant.</li>
+            <li>Trials are independent.</li>
+        </ul>
+
+        <h3>Probability Formula</h3>
+
+        <div class="formula">
+            P(X = x) = C(n,x) p^x (1-p)^(n-x)
+        </div>
+
+        <p>Where:</p>
+        <ul>
+            <li>n = number of trials</li>
+            <li>x = number of successes</li>
+            <li>p = probability of success</li>
+            <li>1-p = probability of failure</li>
+        </ul>
+
+        <h3>Mean and Variance</h3>
+        <div class="formula">
+            Mean = np
+            <br><br>
+            Variance = np(1-p)
+        </div>
+
+        <h3>Worked Example</h3>
+
+        <p>A coin is tossed 5 times. Find the probability of getting exactly 3 heads.</p>
+
+        <p><strong>Step 1:</strong> Identify the values.</p>
+        <p>n = 5, x = 3, p = 0.5</p>
+
+        <p><strong>Step 2:</strong> Apply the formula.</p>
+
+        <div class="formula">
+            P(X = 3) = C(5,3)(0.5)^3(0.5)^2
+            <br><br>
+            = 10 × 0.125 × 0.25
+            <br><br>
+            = 0.3125
+        </div>
+
+        <p><strong>Answer:</strong> The probability is 0.3125 or 31.25%.</p>
+    </div>
+
+    <div class="card">
+        <h2>3. Poisson Distribution</h2>
+
+        <p>The Poisson distribution is used to calculate the probability of a certain number of events occurring within a fixed interval of time, space or another specified measurement.</p>
+
+        <p>Examples include:</p>
+        <ul>
+            <li>Number of customers arriving per hour.</li>
+            <li>Number of accidents per month.</li>
+            <li>Number of typing errors per page.</li>
+        </ul>
+
+        <h3>Probability Formula</h3>
+
+        <div class="formula">
+            P(X = x) = (e^-λ × λ^x) / x!
+        </div>
+
+        <p>Where:</p>
+        <ul>
+            <li>λ (lambda) = average number of events</li>
+            <li>x = number of events required</li>
+            <li>e ≈ 2.71828</li>
+        </ul>
+
+        <h3>Mean and Variance</h3>
+
+        <div class="formula">
+            Mean = λ
+            <br><br>
+            Variance = λ
+        </div>
+
+        <h3>Worked Example</h3>
+
+        <p>A shop receives an average of 3 customers per hour. Find the probability that exactly 2 customers arrive in an hour.</p>
+
+        <p><strong>Step 1:</strong> Identify the values.</p>
+        <p>λ = 3, x = 2</p>
+
+        <p><strong>Step 2:</strong> Apply the formula.</p>
+
+        <div class="formula">
+            P(X = 2) = (e^-3 × 3²) / 2!
+            <br><br>
+            = (0.0498 × 9) / 2
+            <br><br>
+            = 0.2241
+        </div>
+
+        <p><strong>Answer:</strong> The probability is approximately 0.2241 or 22.41%.</p>
+    </div>
+
+    <div class="card">
+        <h2>4. Normal Distribution</h2>
+
+        <p>The normal distribution is a continuous probability distribution that is symmetrical and bell-shaped.</p>
+
+        <p>Its two main parameters are:</p>
+        <ul>
+            <li>μ (mu) = population mean</li>
+            <li>σ (sigma) = population standard deviation</li>
+        </ul>
+
+        <h3>Standard Normal Formula</h3>
+
+        <div class="formula">
+            Z = (X - μ) / σ
+        </div>
+
+        <p>The Z-score tells us how many standard deviations a value is above or below the mean.</p>
+
+        <h3>Important Properties</h3>
+
+        <ul>
+            <li>The curve is symmetrical around the mean.</li>
+            <li>Mean = Median = Mode.</li>
+            <li>The total area under the curve equals 1.</li>
+            <li>Approximately 68% of observations lie within 1 standard deviation of the mean.</li>
+            <li>Approximately 95% lie within 2 standard deviations.</li>
+            <li>Approximately 99.7% lie within 3 standard deviations.</li>
+        </ul>
+
+        <h3>Worked Example</h3>
+
+        <p>Examination scores are normally distributed with a mean of 60 and a standard deviation of 10. Find the Z-score for a student who scored 80.</p>
+
+        <p><strong>Step 1:</strong> Identify the values.</p>
+        <p>X = 80, μ = 60, σ = 10</p>
+
+        <p><strong>Step 2:</strong> Apply the formula.</p>
+
+        <div class="formula">
+            Z = (80 - 60) / 10
+            <br><br>
+            Z = 20 / 10
+            <br><br>
+            Z = 2
+        </div>
+
+        <p><strong>Answer:</strong> The student's score is 2 standard deviations above the mean.</p>
+    </div>
+
+    <div class="card">
+        <h2>5. Quick Comparison</h2>
+
+        <ul>
+            <li><strong>Binomial:</strong> Fixed number of independent trials with two outcomes.</li>
+            <li><strong>Poisson:</strong> Counts events occurring within a fixed interval.</li>
+            <li><strong>Normal:</strong> Continuous, symmetrical, bell-shaped distribution.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>6. Practice Questions</h2>
+
+        <ol>
+            <li>A coin is tossed 6 times. Find the probability of getting exactly 4 heads.</li>
+            <li>A call centre receives an average of 5 calls per hour. Find the probability of receiving exactly 3 calls in an hour.</li>
+            <li>Exam scores have a mean of 70 and a standard deviation of 8. Find the Z-score for a student who scores 86.</li>
+        </ol>
+    </div>
+
+</div>
+</body>
+</html>
+```
